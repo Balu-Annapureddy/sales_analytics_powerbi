@@ -1,62 +1,114 @@
-📊 Sales Analytics Dashboard – Power BI
+# SalesAnalytics — Commercial Sales & Shipment Analytics Platform
 
-This Power BI project analyzes sales performance across products, regions, salespersons, and time periods.
-It converts raw shipment data into actionable business insights with KPIs, visualizations, and year-over-year comparison.
+> **Status**: 🔵 Completed / Portfolio Maintained  
+> **Target Identity**: SalesAnalytics  
+> **License**: MIT License ([LICENSE](LICENSE))  
 
-✅ Key Insights
+SalesAnalytics is an executive business intelligence (BI) and data analytics dashboard built with **Power BI Desktop**, **DAX (Data Analysis Expressions)**, and **Power Query**, engineered to transform multi-million dollar commercial shipment logs into actionable revenue, profit, and regional distribution insights.
 
-Total Revenue: $141M
+---
 
-Units Shipped: 9M
+## Overview
 
-Total Profit
+Executive sales teams need interactive BI dashboards to track revenue performance, compare current-year vs. prior-year (CY vs. PY) trends, evaluate regional profitability, and monitor product SKUs. **SalesAnalytics** models a commercial dataset spanning **\$141M+ in aggregate revenue** and **9M+ shipped units**, implementing a clean star-schema data model and custom DAX measures for executive reporting.
 
-Top Products & Regions
+---
 
-Salesperson leaderboard
+## Why I Built It
 
-Shipment Distribution
+I built SalesAnalytics to master business intelligence development, dimensional data modeling (Star Schema), Power Query ETL transformations, and advanced DAX metric calculations. Key analytical challenges included building time-intelligence measures for year-over-year (YoY) comparison, calculating net profit margins across geographic regions, and designing clean visual hierarchies for executive decision-making.
 
-CY vs PY performance comparison
+---
 
-✅ Features
+## Architecture & Data Flow
 
-✔ Interactive dashboard
-✔ Custom DAX measures
-✔ KPI cards (revenue, boxes, profit)
-✔ Pie, bar, line, and table visuals
-✔ Drill-down & filtering
-✔ Clean modern UI
+```mermaid
+flowchart TD
+    Raw[Raw Shipment Transactions CSV / Excel Logs] --> PowerQuery[Power Query ETL - Cleaning & Schema Normalization]
+    
+    subgraph Data Model & DAX Engine
+        PowerQuery --> StarSchema[Star Schema - FactShipments linked to DimDate, DimProduct, DimSalesperson]
+        StarSchema --> DAX[Custom DAX Measures - Revenue, Net Profit, YTD Growth, CY vs PY]
+    end
 
-✅ Files in this Repository
-File	Description
-chocolate_shipment_analytics_dashboard.pbix	  Main Power BI report
-chocolate_shipment_dashboard_PowerBi.pdf      pdf version of the file
-✅ Tools Used
+    subgraph Interactive Reporting & Dashboards
+        DAX --> Visuals[Power BI Dashboard Visualizations]
+        Visuals --> PBIT[Power BI Template File .pbit]
+        Visuals --> PDFExport[Executive Report PDF Export]
+    end
+```
 
-Power BI Desktop
+---
 
-DAX
+## Key Features & Systems Design
 
-Data Modeling
+- **Star-Schema Dimensional Data Model**: Links core shipment fact tables with normalized dimension tables (`Product`, `Salesperson`, `Geographic Region`, `Calendar Date`).
+- **Custom DAX Financial Measures**:
+  - `Total Revenue`: Aggregates total sales dollar value (\$141M total).
+  - `Total Units Shipped`: Tracks box unit volume (9M total).
+  - `Total Profit & Margin %`: Calculates net margin by subtracting unit costs from shipment revenue.
+  - `Time-Intelligence (YoY)`: Calculates Current Year (CY) vs. Prior Year (PY) variance and percentage growth.
+- **Executive KPI Cards & Drill-Downs**: High-level summary metrics with dynamic filtering by date, region, product, and sales agent.
+- **Product & Geographic Leaderboards**: Visual rankings highlighting top-performing SKUs and country sales distribution.
+- **Report Exports Included**: Includes both the reusable Power BI template (`chocolate_shipment_analytics_dashboard.pbit`) and a full PDF report export ([`chocolate_shipment_dashboard_PowerBi.pdf`](chocolate_shipment_dashboard_PowerBi.pdf)).
 
-Excel/CSV dataset
+---
 
-✅ How to Open
+## Technical Stack & Tooling
 
-Download chocolate_shipment_analytics_dashboard.pbix
+| Component | Technology / Skill |
+|---|---|
+| **BI Platform** | Power BI Desktop |
+| **Data Modeling** | Star Schema Dimensional Modeling |
+| **Calculation Engine** | DAX (Data Analysis Expressions) |
+| **ETL & Data Transformation** | Power Query M Engine |
+| **Export Formats** | `.pbit` Power BI Template, PDF Executive Report |
 
-Open using Power BI Desktop (latest version)
+---
 
-Interact with visuals, filters, and drilldowns
+## Repository Structure
 
+```
+SalesAnalytics/
+├── chocolate_shipment_analytics_dashboard.pbit  # Power BI template report
+├── chocolate_shipment_dashboard_PowerBi.pdf     # High-resolution PDF dashboard export
+├── .gitignore                                   # Git untracked files rules
+├── LICENSE                                      # MIT License
+└── README.md                                    # Project documentation
+```
 
+---
 
-✅ Purpose
+## How to View & Open
 
-This dashboard demonstrates how businesses can analyze sales performance, identify profit drivers, understand customer demand, and compare results across years and regions.
+### Option 1: View PDF Report Export (No Installation Required)
 
-✅ Author
+Inspect the rendered dashboard visuals in the included PDF report export:
 
-Balu
-Feel free to suggest improvements or report issues.
+📄 **[`chocolate_shipment_dashboard_PowerBi.pdf`](chocolate_shipment_dashboard_PowerBi.pdf)**
+
+### Option 2: Open Template in Power BI Desktop
+
+1. Download and install [Power BI Desktop](https://powerbi.microsoft.com/desktop/).
+2. Double-click `chocolate_shipment_analytics_dashboard.pbit` to load the template.
+3. Bind your dataset connection parameters to explore interactively.
+
+---
+
+## Key Business Insights Discovered
+
+- **Aggregate Revenue Analyzed**: \$141M+ total gross revenue across all global distribution channels.
+- **Volume Shipped**: 9M+ unit boxes fulfilled across regional hubs.
+- **Performance Distribution**: Identified top 10 revenue-generating product SKUs and highlighted underperforming sales territories for targeted commercial intervention.
+
+---
+
+## Limitations
+
+- **Template File**: The `.pbit` template file stores report visuals, DAX definitions, and data models without embedding large raw transaction rows directly in the git repository.
+
+---
+
+## License
+
+This project is licensed under the MIT License — see the [`LICENSE`](LICENSE) file for details.
