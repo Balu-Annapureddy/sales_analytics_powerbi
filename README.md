@@ -1,6 +1,6 @@
 # SalesAnalytics — Commercial Sales & Shipment Analytics Platform
 
-> **Status**: 🔵 Completed / Portfolio Maintained  
+> **Status**: 🔵 Completed BI Project  
 > **Target Identity**: SalesAnalytics  
 > **License**: MIT License ([LICENSE](LICENSE))  
 
@@ -92,6 +92,12 @@ Inspect the rendered dashboard visuals in the included PDF report export:
 1. Download and install [Power BI Desktop](https://powerbi.microsoft.com/desktop/).
 2. Double-click `chocolate_shipment_analytics_dashboard.pbit` to load the template.
 3. Bind your dataset connection parameters to explore interactively.
+
+---
+
+## Security Audit & Verification Notice
+
+An audit of source files found no obvious hardcoded credentials. Reports use parameterized data source definitions.
 
 ---
 
